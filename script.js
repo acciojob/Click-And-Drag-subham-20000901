@@ -1,49 +1,49 @@
 // Your code here.
 const container = document.querySelector(".container");
-const cubes = document.querySelectorAll(".cube");
+const items = document.querySelectorAll(".item");
 let isDragging = false;
-let currentCube = null;
+let currentItem = null;
 let offsetX = 0;
 let offsetY = 0;
 
-cubes.forEach((cube) => {
-	cube.addEventListener('mousedown',function(e){
+items.forEach((cube) => {
+	item.addEventListener('mousedown',function(e){
 	  isDragging = true;
-		currentCube = cube;
-		offsetX = e.clientX - cube.offsetLeft;
+		currentItem = item;
+		offsetX = e.clientX - item.offsetLeft;
 		offsetY = e.clientY - cube.offsetTop;
 	})
 })
 document.addEventListener("mousemove",function(e){
-	if(isDragging && currentCube) {
+	if(isDragging && currentItem) {
 	let newLeft = e.clientX - offsetX;
 	let newTop = e.clientY - offsetY;
 
 	let containerWidth = container.clientWidth;
 	let containerHeight = container.clientHeight;
 
-	let cubeWidth = currentCube.clientWidth;
-	let cubeHeight = currentCube.clientHeight;
+	let itemWidth = currentItem.clientWidth;
+	let itemHeight = currentItem.clientHeight;
 
 	if(newLeft< 0){
 		newLeft = 0;
 	}
-	if(newLeft > containerWidth - cubeWidth){
-		newLeft = containerWidth - cubeWidth;
+	if(newLeft > containerWidth -itemWidth){
+		newLeft = containerWidth -itemWidth);
 	}
 
 	if(newTop < 0){
 		newTop = 0;
 	}
 
-	if(newTop > containerHeight - cubeHeight) {
-		newTop = containerHeight - cubeHeight;
+	if(newTop > containerHeight - itemHeight) {
+		newTop = containerHeight - itemHeight;
 	}
-	currentCube.style.left = newLeft + "px";
-	currentCube.style.top = newTop + "px";
+	currentItem.style.left = newLeft + "px";
+	currentItem.style.top = newTop + "px";
 	}
 });
 document.addEventListener("mouseup",function(){
 	isDragging = false;
-	currentCube = null;
+	currentItem = null;
 });
