@@ -8,6 +8,8 @@ let offsetY = 0;
 
 items.forEach((item) => {
 	item.addEventListener("mousedown", function(e) {
+		e.preventDefault();  // Prevent native behavior
+
 		isDragging = true;
 		currentItem = item;
 
