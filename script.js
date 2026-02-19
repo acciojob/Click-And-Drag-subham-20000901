@@ -11,7 +11,7 @@ items.forEach((item) => {
 	  isDragging = true;
 		currentItem = item;
 		offsetX = e.clientX - item.offsetLeft;
-		offsetY = e.clientY - cube.offsetTop;
+		offsetY = e.clientY - item.offsetTop;
 	})
 })
 document.addEventListener("mousemove",function(e){
@@ -29,7 +29,7 @@ document.addEventListener("mousemove",function(e){
 		newLeft = 0;
 	}
 	if(newLeft > containerWidth -itemWidth){
-		newLeft = containerWidth -itemWidth);
+		newLeft = containerWidth -itemWidth;
 	}
 
 	if(newTop < 0){
