@@ -1,49 +1,47 @@
-// Your code here.
 const container = document.querySelector(".items");
 const items = document.querySelectorAll(".item");
+
 let isDragging = false;
 let currentItem = null;
 let offsetX = 0;
 let offsetY = 0;
 
 items.forEach((item) => {
-	item.addEventListener('mousedown',function(e){
-	  isDragging = true;
+	item.addEventListener("mousedown", function(e) {
+		isDragging = true;
 		currentItem = item;
-		offsetX = e.clientX - item.offsetLeft;
-		offsetY = e.clientY - item.offsetTop;
-	})
-})
-document.addEventListener("mousemove",function(e){
-	if(isDragging && currentItem) {
-	let newLeft = e.clientX - offsetX;
-	let newTop = e.clientY - offsetY;
 
-	let containerWidth = container.clientWidth;
-	let containerHeight = container.clientHeight;
+		offsetX = e.pageX - item.offsetLeft;
+		offsetY = e.pageY - item.offsetTop;
+	});
+});
 
-	let itemWidth = currentItem.clientWidth;
-	let itemHeight = currentItem.clientHeight;
+document.addEventListener("mousemove", function(e) {
+	if (isDragging && currentItem) {
 
-	if(newLeft< 0){
-		newLeft = 0;
-	}
-	if(newLeft > containerWidth -itemWidth){
-		newLeft = containerWidth -itemWidth;
-	}
+		let newLeft = e.pageX - offsetX;
+		let newTop = e.pageY - offsetY;
 
-	if(newTop < 0){
-		newTop = 0;
-	}
+		let containerWidth = container.clientWidth;
+		let containerHeight = container.clientHeight;
 
-	if(newTop > containerHeight - itemHeight) {
-		newTop = containerHeight - itemHeight;
-	}
-	currentItem.style.left = newLeft + "px";
-	currentItem.style.top = newTop + "px";
+		let itemWidth = currentItem.clientWidth;
+		let itemHeight = currentItem.clientHeight;
+
+		if (newLeft < 0) newLeft = 0;
+		if (newLeft > containerWidth - itemWidth)
+			newLeft = containerWidth - itemWidth;
+
+		if (newTop < 0) newTop = 0;
+		if (newTop > containerHeight - itemHeight)
+			newTop = containerHeight - itemHeight;
+
+		currentItem.style.left = newLeft + "px";
+		currentItem.style.top = newTop + "px";
 	}
 });
-document.addEventListener("mouseup",function(){
+
+document.addEventListener("mouseup", function() {
 	isDragging = false;
 	currentItem = null;
 });
