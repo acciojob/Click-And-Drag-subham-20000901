@@ -1,5 +1,5 @@
 // Your code here.
-const containe = document.querySelector(".container");
+const containe = document.querySelector(".items");
 const item = document.querySelectorAll(".item");
 let isDragging = false;
 let currentItem = null;
