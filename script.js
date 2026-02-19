@@ -1,12 +1,12 @@
 // Your code here.
-const container = document.querySelector(".container");
-const items = document.querySelectorAll(".item");
+const containe = document.querySelector(".container");
+const item = document.querySelectorAll(".item");
 let isDragging = false;
 let currentItem = null;
 let offsetX = 0;
 let offsetY = 0;
 
-items.forEach((cube) => {
+items.forEach((item) => {
 	item.addEventListener('mousedown',function(e){
 	  isDragging = true;
 		currentItem = item;
